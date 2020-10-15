@@ -37,7 +37,7 @@ ARG PRESTO_VERSION=0.236
 COPY --from=build-env                       /presto/presto-cli/target/presto-cli-${PRESTO_VERSION}-executable.jar /usr/lib/presto/presto-cli.jar
 COPY --from=build-env                       /presto/presto-server/target/presto-server-${PRESTO_VERSION}/presto-server-${PRESTO_VERSION} /usr/lib/presto
 # add jmx prometheus agent to dockerfile
-ADD --chown=presto:presto https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.12.0/jmx_prometheus_javaagent-0.12.0.jar /prometheus/
+ADD  https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.12.0/jmx_prometheus_javaagent-0.12.0.jar /usr/lib/presto/prometheus/
 COPY Docker/bin                             /usr/lib/presto/bin
 COPY Docker/default                         /usr/lib/presto
 COPY Docker/prometheus                      /usr/lib/presto/prometheus
